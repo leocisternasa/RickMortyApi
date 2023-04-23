@@ -24,10 +24,19 @@
       .then(res => res.json())
       .then(data => {
         console.log(data)
-
-      }).catch(error => console.log(error)) 
+        let html = ``;
+        html += `<div class="card" style="width: 18rem;">
+  <img src="${data.image}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">${data.name}</h5>
+    <p class="card-text">Especie: ${data.species}</p>
+    <button onclick="verPersonajes()"class="btn btn-primary">Ver todos los personajes</button>
+  </div>
+  </div>`
+  document.getElementById("container_card").innerHTML = html;}
+      ).catch(error => console.log(error)) 
     }
-
+    function verPersonajes(){
     fetch("https://rickandmortyapi.com/api/character")
     .then(resp => resp.json())
     .then(data => {
@@ -46,7 +55,8 @@
       }
       document.getElementById("container_card").innerHTML = html
     })
-    .catch(error => console.log(error))
+    .catch(error => console.log(error))}
+    verPersonajes();
   </script>
 </body>
 </html>
